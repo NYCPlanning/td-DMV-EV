@@ -27,7 +27,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas
         pip install datetime
-        pip install os
         pip install sodapy
         pip install dateutil
         pip install plotly 
