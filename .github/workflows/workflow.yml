@@ -27,9 +27,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas
         pip install datetime
-        pip install calendar
+        pip install os
         pip install sodapy
         pip install dateutil
+        pip install plotly 
     - name: Run VR_MonthlyDiff_forGithub.py
       env: 
         NYS_APP_TOKEN: ${{secrets.NYS_APP_TOKEN}} 
