@@ -15,9 +15,6 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 start=datetime.datetime.now()
-pd.set_option('display.max_columns', None)
-pd.set_option('display.expand_frame_repr', False)
-pd.set_option('max_colwidth', -1)
 
 token = os.environ.get('NYS_APP_TOKEN')
 
