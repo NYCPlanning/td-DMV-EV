@@ -33,4 +33,4 @@ rawdf = pd.read_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print("read output")
 
 client = Socrata("data.ny.gov", token)
-
+results = client.get("w4pv-hbkt", limit=20000000)
