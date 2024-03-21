@@ -10,6 +10,8 @@ import os
 import datetime
 from dateutil import rrule
 import calendar
+from sodapy import Socrata
+
 token = os.environ.get('NYS_APP_TOKEN')
 
 
@@ -29,3 +31,7 @@ monthLabelList = ['November 2019'] + monthList[:-1]
 
 rawdf = pd.read_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print("read output")
+
+client = Socrata("data.ny.gov", token)
+results = client.get("w4pv-hbkt", limit=20000000)
+results_df = pd.DataFrame.from_records(results)
