@@ -17,6 +17,7 @@ regClassList = ['ARG', 	'AYG', 	'BOB', 	'CBS', 	'CCK', 	'CLG', 	'CME', 	'CMH', 	
 
 boroughList = ["KINGS", "NEW YORK", "QUEENS" ,"BRONX", "RICHMOND"]
 
+start=datetime.datetime.now()
 start_date = datetime.datetime(2019, 12, 1)
 end_date = start
 monthList = []
