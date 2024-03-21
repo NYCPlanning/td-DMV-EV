@@ -23,7 +23,7 @@ token = os.environ.get('NYS_APP_TOKEN')
 regClassList = ['ARG', 	'AYG', 	'BOB', 	'CBS', 	'CCK', 	'CLG', 	'CME', 	'CMH', 	'EDU', 	'FPW', 	'GAC', 	'GSC', 	'GSM', 	'HAM', 	'HIS', 	'JCA', 	'JCL', 	'JSC', 	'JWV', 	'LOC', 	'LUA', 	'MCL', 	'MED', 	'NLM', 	'NYA', 	'NYC', 	'NYS', 	'ORG', 	'PAS', 	'PHS', 	'PPH', 	'RGL', 	'SCL', 	'SOS', 	'SPO', 	'SRF', 	'SRN', 	'STG', 	'SUP', 	'USC', 	'USS', 	'VPL', 	'WUG']
 
 boroughList = ["KINGS", "NEW YORK", "QUEENS" ,"BRONX", "RICHMOND"]
-
+print("boroughList")
 start_date = datetime.datetime(2019, 12, 1)
 end_date = start
 monthList = []
