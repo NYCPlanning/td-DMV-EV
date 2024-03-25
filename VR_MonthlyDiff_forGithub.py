@@ -32,7 +32,7 @@ monthLabelList = ['November 2019'] + monthList[:-1]
 rawdf = pd.read_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print("read output")
 
-query = f"""SELECT * WHERE record_type="VEH" and suspension_indicator ="N" and revocation_indicator = "N" LIMIT 2000"""
+query = f"""SELECT * WHERE record_type="VEH" and suspension_indicator ="N" and revocation_indicator = "N" and county IN ("KINGS", "NEW YORK", "QUEENS" ,"BRONX", "RICHMOND") LIMIT 20000000"""
 client = Socrata("data.ny.gov", "88Jdq3O5tU0yCZopaE7GJtLul")
 results = client.get("w4pv-hbkt", query=query)
 results_df = pd.DataFrame.from_records(results)
