@@ -37,3 +37,29 @@ client = Socrata("data.ny.gov", "88Jdq3O5tU0yCZopaE7GJtLul")
 results = client.get("w4pv-hbkt", query=query)
 results_df = pd.DataFrame.from_records(results)
 print("Reading Data done!")
+
+
+N = len(monthList) - 1
+        
+vehdf = results_df.loc[results_df["registration_class"].isin(regClassList)]
+    
+bkdf = vehdf.loc[vehdf["CountyMod"] == "KINGS"]
+mndf = vehdf.loc[vehdf["CountyMod"] == "NEW YORK"]
+qndf = vehdf.loc[vehdf["CountyMod"] == "QUEENS"]
+bxdf = vehdf.loc[vehdf["CountyMod"] == "BRONX"]
+sidf = vehdf.loc[vehdf["CountyMod"] == "RICHMOND"] 
+
+evdf = vehdf.loc[vehdf["fuel_type"] == "ELECTRIC"]
+
+evbkdf = evdf.loc[evdf["CountyMod"] == "KINGS"]
+evmndf = evdf.loc[evdf["CountyMod"] == "NEW YORK"]
+evqndf = evdf.loc[evdf["CountyMod"] == "QUEENS"]
+evbxdf = evdf.loc[evdf["CountyMod"] == "BRONX"]
+evsidf = evdf.loc[evdf["CountyMod"] == "RICHMOND"] 
+
+rawdf.insert((len(monthList)-13), monthLabelList[N] + "-Total", [bkdf.shape[0], mndf.shape[0], qndf.shape[0], bxdf.shape[0], sidf.shape[0], vehdf.shape[0]], True)
+rawdf.insert((len(monthList)-13)*2, monthLabelList[N]+"-EV", [evbkdf.shape[0], evmndf.shape[0], evqndf.shape[0], evbxdf.shape[0], evsidf.shape[0], evdf.shape[0]], True)
+rawdf.insert((len(monthList)-13)*3, monthLabelList[N]+"-EV Perc", [evbkdf.shape[0]/bkdf.shape[0], evmndf.shape[0]/mndf.shape[0], evqndf.shape[0]/qndf.shape[0], evbxdf.shape[0]/bxdf.shape[0], evsidf.shape[0]/sidf.shape[0], evdf.shape[0]/vehdf.shape[0]], True)
+
+
+rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv")
