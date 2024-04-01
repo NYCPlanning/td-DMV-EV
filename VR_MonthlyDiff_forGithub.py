@@ -65,6 +65,8 @@ evsidf = evdf.loc[evdf["county"] == "RICHMOND"]
 rawdf[monthLabelList[N] + "-Total"] = pd.Series([bkdf.shape[0], mndf.shape[0], qndf.shape[0], bxdf.shape[0], sidf.shape[0], vehdf.shape[0]])
 rawdf[monthLabelList[N] + "-EV"] = pd.Series([evbkdf.shape[0], evmndf.shape[0], evqndf.shape[0], evbxdf.shape[0], evsidf.shape[0], evdf.shape[0]])
 rawdf[monthLabelList[N] + "-EV Perc"] = pd.Series([evbkdf.shape[0]/bkdf.shape[0], evmndf.shape[0]/mndf.shape[0], evqndf.shape[0]/qndf.shape[0], evbxdf.shape[0]/bxdf.shape[0], evsidf.shape[0]/sidf.shape[0], evdf.shape[0]/vehdf.shape[0]])
+rawdf[monthLabelList[N] + "-EV Perc"] = rawdf[monthLabelList[N] + "-EV Perc"] * 100
+rawdf[monthLabelList[N] + "-EV Perc"] = rawdf[monthLabelList[N] + "-EV Perc"].apply(lambda x: round(x, 2))
 rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv", index=False)
 print(rawdf)
 
