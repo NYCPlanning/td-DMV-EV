@@ -60,13 +60,13 @@ evsidf = evdf.loc[evdf["county"] == "RICHMOND"]
 
 rawdf.insert((len(monthList)-13), monthLabelList[N] + "-Total", [bkdf.shape[0], mndf.shape[0], qndf.shape[0], bxdf.shape[0], sidf.shape[0], vehdf.shape[0]], True)
 rawdf.insert((len(monthList)-13)*2, monthLabelList[N]+"-EV", [evbkdf.shape[0], evmndf.shape[0], evqndf.shape[0], evbxdf.shape[0], evsidf.shape[0], evdf.shape[0]], True)
-rawdf.insert((len(monthList)-13)*3, monthLabelList[N]+"-EV Perc", [evbkdf.shape[0]/bkdf.shape[0], evmndf.shape[0]/mndf.shape[0], evqndf.shape[0]/qndf.shape[0], evbxdf.shape[0]/bxdf.shape[0], evsidf.shape[0]/sidf.shape[0], evdf.shape[0]/vehdf.shape[0]], True)
+#rawdf.insert((len(monthList)-13)*3, monthLabelList[N]+"-EV Perc", [evbkdf.shape[0]/bkdf.shape[0], evmndf.shape[0]/mndf.shape[0], evqndf.shape[0]/qndf.shape[0], evbxdf.shape[0]/bxdf.shape[0], evsidf.shape[0]/sidf.shape[0], evdf.shape[0]/vehdf.shape[0]], True)
 
 
 rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print(rawdf)
 
-
+'''
 mergedf = rawdf[["County"]+ rawdf.columns[rawdf.columns.str.contains(pat = '-Total')].tolist()].melt(id_vars='County')
 mergedf['variable'] = mergedf['variable'].str.rstrip('-Total')
 mergedf = mergedf[mergedf["County"]!="Total"]
@@ -101,3 +101,4 @@ fig1.update_yaxes(title_text="Percent of EV Registrations", secondary_y=True)
 fig1.update_xaxes(tickangle=45)
 #fig1.update_layout(hovermode="x")
 fig1.show()
+'''
