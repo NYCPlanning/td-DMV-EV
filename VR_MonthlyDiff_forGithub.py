@@ -40,7 +40,7 @@ results_df = pd.DataFrame.from_records(results)
 print("Reading Data done!")
 
 
-N = len(monthList) - 1
+N = len(monthList) - 2
         
 vehdf = results_df.loc[results_df["registration_class"].isin(regClassList)]
     
