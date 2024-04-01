@@ -30,15 +30,13 @@ for dt in rrule.rrule(rrule.MONTHLY, dtstart=start_date, until=end_date):
 monthLabelList = ['November 2019'] + monthList[:-1]
 
 rawdf = pd.read_csv("DMV_borough_full_excl_susp_rvct_output.csv")
-print("read output")
 print(rawdf)
 
 query = f"""SELECT * WHERE record_type="VEH" and suspension_indicator ="N" and revocation_indicator = "N" and county IN ("KINGS", "NEW YORK", "QUEENS" ,"BRONX", "RICHMOND") LIMIT 20000000"""
 client = Socrata("data.ny.gov", "88Jdq3O5tU0yCZopaE7GJtLul")
 results = client.get("w4pv-hbkt", query=query)
 results_df = pd.DataFrame.from_records(results)
-print("Reading Data done!")
-print(start)
+
 
 N = len(monthList) - 2
         
@@ -65,7 +63,7 @@ evsidf = evdf.loc[evdf["county"] == "RICHMOND"]
 rawdf[monthLabelList[N] + "-Total"] = pd.Series([bkdf.shape[0], mndf.shape[0], qndf.shape[0], bxdf.shape[0], sidf.shape[0], vehdf.shape[0]])
 rawdf[monthLabelList[N] + "-EV"] = pd.Series([evbkdf.shape[0], evmndf.shape[0], evqndf.shape[0], evbxdf.shape[0], evsidf.shape[0], evdf.shape[0]])
 rawdf[monthLabelList[N] + "-EV Perc"] = pd.Series([evbkdf.shape[0]/bkdf.shape[0], evmndf.shape[0]/mndf.shape[0], evqndf.shape[0]/qndf.shape[0], evbxdf.shape[0]/bxdf.shape[0], evsidf.shape[0]/sidf.shape[0], evdf.shape[0]/vehdf.shape[0]])
-rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv")
+rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv", index=False)
 print(rawdf)
 
 
