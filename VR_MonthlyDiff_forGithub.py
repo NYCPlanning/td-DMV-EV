@@ -31,6 +31,7 @@ monthLabelList = ['November 2019'] + monthList[:-1]
 
 rawdf = pd.read_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print("read output")
+print(rawdf)
 
 query = f"""SELECT * WHERE record_type="VEH" and suspension_indicator ="N" and revocation_indicator = "N" and county IN ("KINGS", "NEW YORK", "QUEENS" ,"BRONX", "RICHMOND") LIMIT 20000000"""
 client = Socrata("data.ny.gov", "88Jdq3O5tU0yCZopaE7GJtLul")
@@ -63,3 +64,4 @@ rawdf.insert((len(monthList)-13)*3, monthLabelList[N]+"-EV Perc", [evbkdf.shape[
 
 
 rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv")
+print(rawdf)
