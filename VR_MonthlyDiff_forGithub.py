@@ -79,7 +79,7 @@ linedf = linedf[linedf["County"]=="Total"]
 
 mergedf.columns = ["County", "Month", "Vehicle Registrations"]
 linedf.columns = ["County", "Month", "Percent of EV Registrations"]
-'''
+
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 mn = mergedf[mergedf["County"]=="NEW YORK"]
 fig1.add_trace(go.Bar(name='New York', x=mn['Month'], y=mn['Vehicle Registrations']))
@@ -101,4 +101,4 @@ fig1.update_yaxes(title_text="Percent of EV Registrations", secondary_y=True)
 fig1.update_xaxes(tickangle=45)
 #fig1.update_layout(hovermode="x")
 fig1.show()
-'''
+
