@@ -68,7 +68,7 @@ rawdf[monthLabelList[N] + "-EV Perc"] = pd.Series([evbkdf.shape[0]/bkdf.shape[0]
 rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv")
 print(rawdf)
 
-'''
+
 mergedf = rawdf[["County"]+ rawdf.columns[rawdf.columns.str.contains(pat = '-Total')].tolist()].melt(id_vars='County')
 mergedf['variable'] = mergedf['variable'].str.rstrip('-Total')
 mergedf = mergedf[mergedf["County"]!="Total"]
@@ -103,4 +103,4 @@ fig1.update_yaxes(title_text="Percent of EV Registrations", secondary_y=True)
 fig1.update_xaxes(tickangle=45)
 #fig1.update_layout(hovermode="x")
 fig1.show()
-'''
+
