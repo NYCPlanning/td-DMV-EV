@@ -34,3 +34,10 @@ jobs:
         NYS_APP_TOKEN: ${{secrets.NYS_APP_TOKEN}} 
       run: |
         python ./VR_MonthlyDiff_forGithub.py
+    - name: Git push
+      run: |
+        git config --global user.name "rrlinrr"
+        git config --global user.email "rlin@planning.nyc.gov"
+        git add .
+        git commit -m "update"
+        git push
