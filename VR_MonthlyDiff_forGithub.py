@@ -104,3 +104,5 @@ fig1.update_yaxes(title_text="Percent of EV Registrations", secondary_y=True)
 fig1.update_xaxes(tickangle=45)
 
 
+with open('index.html', 'w') as f:
+    f.write(fig1.to_html(full_html=False, include_plotlyjs='cdn'))
