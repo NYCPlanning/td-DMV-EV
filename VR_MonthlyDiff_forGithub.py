@@ -11,6 +11,8 @@ import datetime
 from dateutil import rrule
 import calendar
 from sodapy import Socrata
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 token = os.environ.get('NYS_APP_TOKEN')
 
