@@ -40,7 +40,7 @@ results = client.get("w4pv-hbkt", query=query)
 results_df = pd.DataFrame.from_records(results)
 
 
-N = len(monthList) - 2
+N = len(monthList) - 1
         
 vehdf = results_df.loc[results_df["registration_class"].isin(regClassList)]
     
