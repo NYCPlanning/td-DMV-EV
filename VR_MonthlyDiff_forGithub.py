@@ -70,7 +70,6 @@ rawdf[monthLabelList[N] + "-EV Perc"] = rawdf[monthLabelList[N] + "-EV Perc"].ap
 rawdf.to_csv("DMV_borough_full_excl_susp_rvct_output.csv", index=False)
 print(rawdf)
 
-
 mergedf = rawdf[["County"]+ rawdf.columns[rawdf.columns.str.contains(pat = '-Total')].tolist()].melt(id_vars='County')
 mergedf['variable'] = mergedf['variable'].str.rstrip('-Total')
 mergedf = mergedf[mergedf["County"]!="Total"]
